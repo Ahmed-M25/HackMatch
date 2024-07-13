@@ -27,7 +27,8 @@ const AuthForm: React.FC<AuthFormProps> = ({ formType }) => {
 
       if (response.data.token) {
         localStorage.setItem('token', response.data.token);
-        navigate('/home');
+        localStorage.setItem('username', response.data.username);
+        navigate('/profile');
       }
     } catch (error) {
       console.error('Error:', error);

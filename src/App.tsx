@@ -6,6 +6,9 @@ import FormCard from './components/FormCard';
 import AuthForm from './pages/AuthForm';
 import Connect from "./pages/Connect";
 import Matches from "./pages/Matches";
+import Profile from './pages/Profile';
+import NotFound from './pages/NotFound';
+import PrivateRoute from './components/PrivateRoute';  
 import Navbar from "./components/Navbar";
 
 function App() {
@@ -28,6 +31,12 @@ function App() {
             } />
             <Route path="/connect" element={<Connect />} />
             <Route path="/matches" element={<Matches />} />
+            <Route path="/profile" element={
+              <PrivateRoute>
+                <Profile />
+              </PrivateRoute>
+            } />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
       </Router>
