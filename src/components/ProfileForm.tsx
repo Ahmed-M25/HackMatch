@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import {
   Box,
   Button,
-  Checkbox,
   FormControl,
   FormLabel,
   Input,
@@ -76,7 +75,7 @@ const ProfileForm: React.FC = () => {
       );
 
       if (response.status === 200) {
-        alert("Profile updated successfully");
+        alert("Successful");
       }
     } catch (error) {
       console.error("Error:", error);
@@ -119,12 +118,12 @@ const ProfileForm: React.FC = () => {
           <FormLabel>I'm looking for someone that knows...</FormLabel>
           <RadioGroup onChange={(value) => setDesiredRole(value)} value={desiredRole}>
             <Stack direction='column'>
-              <Radio value='1' colorScheme='teal' isInvalid={isRoleInvalid}>Frontend</Radio>
-              <Radio value='2' colorScheme='teal' isInvalid={isRoleInvalid}>Backend</Radio>
-              <Radio value='4' colorScheme='teal' isInvalid={isRoleInvalid}>Fullstack</Radio>
-              <Radio value='5' colorScheme='teal' isInvalid={isRoleInvalid}>Mobile</Radio>
-              <Radio value='6' colorScheme='teal' isInvalid={isRoleInvalid}>AI/ML</Radio>
-              <Radio value='7' colorScheme='teal' isInvalid={isRoleInvalid}>Hardware/Embedded</Radio>
+              <Radio value='Frontend' colorScheme='teal' isInvalid={isRoleInvalid}>Frontend</Radio>
+              <Radio value='Backend' colorScheme='teal' isInvalid={isRoleInvalid}>Backend</Radio>
+              <Radio value='Fullstack' colorScheme='teal' isInvalid={isRoleInvalid}>Fullstack</Radio>
+              <Radio value='Mobile' colorScheme='teal' isInvalid={isRoleInvalid}>Mobile</Radio>
+              <Radio value='AI/ML' colorScheme='teal' isInvalid={isRoleInvalid}>AI/ML</Radio>
+              <Radio value='Hardware/Embedded' colorScheme='teal' isInvalid={isRoleInvalid}>Hardware/Embedded</Radio>
             </Stack>
           </RadioGroup>
         </FormControl>

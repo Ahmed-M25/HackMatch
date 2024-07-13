@@ -1,6 +1,8 @@
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+
 export interface HackerStats {
   name: string;
-  image?: string; // Nothing for now since we need to find a way to store images
   school: string;
   techStack: string;
   seeking: string;

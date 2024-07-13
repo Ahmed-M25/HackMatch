@@ -1,16 +1,19 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
 
+const hackerStatsSchema = new mongoose.Schema({
+  username: String,
+  school: String,
+  techStack: String,
+  desiredRole: String,
+  contact: String,
+});
+
 const UserSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  hackerStats: {
-    school: { type: String, required: true },
-    techStack: { type: String, required: true },
-    desiredRoles: { type: [String], required: true },
-    contact: { type: String, required: true}
-  }
+  hackerStats: hackerStatsSchema
 });
 
 UserSchema.pre('save', async function(next) {
