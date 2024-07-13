@@ -7,6 +7,8 @@ import { HackerStats, profileList } from "../data/hackerData";
 const Connect = () => {
   const [currIndex, setCurrIndex] = useState(0);
   const [profile, setProfile] = useState<HackerStats>(profileList[currIndex]);
+  const [interested, setInerested] = useState<string[]>([]); 
+
   const [animation, setAnimation] = useState<string>("");
 
   const handleNotInterested = () => {
@@ -26,6 +28,10 @@ const Connect = () => {
     // Move to the next profile, if available
     setAnimation("swipeRight");
     setTimeout(() => {
+      const firstName = profile.name.split(' ')[0];
+      setInerested((prev) => [...prev, firstName]);
+      console.log(interested);
+
       if (currIndex < profileList.length - 1) {
         const newIndex = currIndex + 1;
         setCurrIndex(newIndex);
@@ -45,7 +51,7 @@ const Connect = () => {
       <Stack direction="row" spacing={4}>
         <Button
           size="lg"
-          colorScheme="teal"
+          colorScheme="red"
           variant="solid"
           flex="1"
           leftIcon={<ArrowBackIcon />}
