@@ -6,6 +6,8 @@ import {
   FormControl,
   FormLabel,
   Input,
+  Radio,
+  RadioGroup,
   Stack,
   VStack,
   useBreakpointValue,
@@ -18,23 +20,13 @@ const ProfileForm: React.FC = () => {
 
   const [school, setSchool] = useState<string>("");
   const [techStack, setTechStack] = useState<string>("");
-  const [desiredRoles, setDesiredRoles] = useState<string[]>([]);
+  const [desiredRole, setDesiredRole] = useState<string>("");
   const [contact, setContact] = useState<string>("");
 
   const [isSchoolInvalid, setIsSchoolInvalid] = useState<boolean>(false);
   const [isTechStackInvalid, setIsTechStackInvalid] = useState<boolean>(false);
+  const [isRoleInvalid, setIsRoleInvalid] = useState<boolean>(false);
   const [isContactInvalid, setIsContactInvalid] = useState<boolean>(false);
-
-  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
-
-    setDesiredRoles(
-      (prevRoles) =>
-        prevRoles.includes(value)
-          ? prevRoles.filter((role) => role !== value) // Remove if already in list
-          : [...prevRoles, value] // Add if not in list
-    );
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -56,15 +48,18 @@ const ProfileForm: React.FC = () => {
       setIsTechStackInvalid(false);
     }
 
+    if (!desiredRole) {
+      setIsRoleInvalid(true);
+      hasErrors = true;
+    } else {
+      setIsRoleInvalid(false);
+    }
+
     if (!contact) {
       setIsContactInvalid(true);
       hasErrors = true;
     } else {
       setIsContactInvalid(false);
-    }
-
-    if (desiredRoles.length === 0) {
-      hasErrors = true;
     }
 
     if (hasErrors) {
@@ -76,7 +71,7 @@ const ProfileForm: React.FC = () => {
       const token = localStorage.getItem("token");
       const response = await axios.put(
         "http://localhost:5001/api/auth/profile",
-        { school, techStack, desiredRoles, contact },
+        { school, techStack, desiredRole, contact },
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
@@ -121,27 +116,17 @@ const ProfileForm: React.FC = () => {
         </FormControl>
 
         <FormControl id="looking-for" isRequired>
-          <FormLabel>I'm looking for...</FormLabel>
-          <Stack direction="column">
-            <Checkbox value="frontend" onChange={handleCheckboxChange}>
-              Frontend
-            </Checkbox>
-            <Checkbox value="backend" onChange={handleCheckboxChange}>
-              Backend
-            </Checkbox>
-            <Checkbox value="fullstack" onChange={handleCheckboxChange}>
-              Fullstack
-            </Checkbox>
-            <Checkbox value="mobile" onChange={handleCheckboxChange}>
-              Mobile
-            </Checkbox>
-            <Checkbox value="ai-ml" onChange={handleCheckboxChange}>
-              AI/ML
-            </Checkbox>
-            <Checkbox value="hardware-embedded" onChange={handleCheckboxChange}>
-              Hardware/Embedded
-            </Checkbox>
-          </Stack>
+          <FormLabel>I'm looking for someone that knows...</FormLabel>
+          <RadioGroup onChange={(value) => setDesiredRole(value)} value={desiredRole}>
+            <Stack direction='column'>
+              <Radio value='1' colorScheme='teal' isInvalid={isRoleInvalid}>Frontend</Radio>
+              <Radio value='2' colorScheme='teal' isInvalid={isRoleInvalid}>Backend</Radio>
+              <Radio value='4' colorScheme='teal' isInvalid={isRoleInvalid}>Fullstack</Radio>
+              <Radio value='5' colorScheme='teal' isInvalid={isRoleInvalid}>Mobile</Radio>
+              <Radio value='6' colorScheme='teal' isInvalid={isRoleInvalid}>AI/ML</Radio>
+              <Radio value='7' colorScheme='teal' isInvalid={isRoleInvalid}>Hardware/Embedded</Radio>
+            </Stack>
+          </RadioGroup>
         </FormControl>
 
         <FormControl id="contact" isRequired>
