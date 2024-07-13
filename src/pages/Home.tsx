@@ -25,7 +25,6 @@ const styles: { [key: string]: React.CSSProperties } = {
     minHeight: '91vh',
     margin: 0,
     padding: 0,
-    backgroundColor: '#20232a',
     color: '#f5f5f5',
     display: 'flex',
     flexDirection: 'column',

@@ -1,5 +1,4 @@
 import { Link as RouterLink, useLocation } from "react-router-dom";
-import "./Navbar.css";
 import { Box, Flex, Link, Spacer, Heading } from "@chakra-ui/react";
 import { ReactNode } from "react";
 
@@ -49,6 +48,7 @@ const Navbar = () => {
             <NavLink to="/">Home</NavLink>
             <NavLink to="/login">Login/Signup</NavLink>
             <NavLink to="/connect">Connect</NavLink>
+            <NavLink to="/matches">Matches</NavLink>
           </Flex>
         </nav>
       </Flex>
