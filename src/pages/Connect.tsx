@@ -5,8 +5,12 @@ import { useState } from "react";
 import { HackerStats, profileList } from "../data/hackerData";
 
 const Connect = () => {
+  const [started, setStarted] = useState(false);
+
   const [currIndex, setCurrIndex] = useState(0);
   const [profile, setProfile] = useState<HackerStats>(profileList[currIndex]);
+  const [interested, setInterested] = useState<string[]>([]) // All the people the current user is interested in
+  
   const [animation, setAnimation] = useState<string>("");
 
   const handleNotInterested = () => {
@@ -26,6 +30,8 @@ const Connect = () => {
     // Move to the next profile, if available
     setAnimation("swipeRight");
     setTimeout(() => {
+      setInterested((prev) => [...prev, profile.name]);
+
       if (currIndex < profileList.length - 1) {
         const newIndex = currIndex + 1;
         setCurrIndex(newIndex);
@@ -35,35 +41,47 @@ const Connect = () => {
     }, 500);
   };
 
+  const handleStart = () => {
+    setStarted(true);
+  };
+
   return (
     <Flex direction="column" align="center" justify="center" minHeight="100vh">
-      <style>{keyframes}</style>
-      <div style={{ ...styles[animation] }}>
-        <HackerCard profile={profile} />
-      </div>
+      {!started ? (
+        <Button size="lg" colorScheme="teal" onClick={handleStart}>
+          Start Connecting
+        </Button>
+      ) : (
+        <>
+          <style>{keyframes}</style>
+          <div style={{ ...styles[animation] }}>
+            <HackerCard profile={profile} />
+          </div>
 
-      <Stack direction="row" spacing={4}>
-        <Button
-          size="lg"
-          colorScheme="teal"
-          variant="solid"
-          flex="1"
-          leftIcon={<ArrowBackIcon />}
-          onClick={handleNotInterested}
-        >
-          Not Interested
-        </Button>
-        <Button
-          size="lg"
-          colorScheme="teal"
-          variant="solid"
-          flex="1"
-          rightIcon={<ArrowForwardIcon />}
-          onClick={handleInterested}
-        >
-          Interested
-        </Button>
-      </Stack>
+          <Stack direction="row" spacing={4}>
+            <Button
+              size="lg"
+              colorScheme="red"
+              variant="solid"
+              flex="1"
+              leftIcon={<ArrowBackIcon />}
+              onClick={handleNotInterested}
+            >
+              Not Interested
+            </Button>
+            <Button
+              size="lg"
+              colorScheme="teal"
+              variant="solid"
+              flex="1"
+              rightIcon={<ArrowForwardIcon />}
+              onClick={handleInterested}
+            >
+              Interested
+            </Button>
+          </Stack>
+        </>
+      )}
     </Flex>
   );
 };
@@ -85,7 +103,6 @@ const styles: Record<string, AnimationStyle> = {
     animation: "swipeIn 0.5s forwards",
   },
 };
-
 
 // Define keyframes directly in the component
 const keyframes = `

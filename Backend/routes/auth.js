@@ -43,4 +43,40 @@ router.post('/login', async (req, res) => {
   }
 });
 
+<<<<<<< Updated upstream
+=======
+router.put('/profile', async (req, res) => {
+  const { authorization } = req.headers;
+  const { school, techStack, desiredRoles, contact } = req.body;
+  console.log('Received data:', { school, techStack, desiredRoles, contact }); 
+
+  if (!authorization) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+
+  try {
+    const token = authorization.split(' ')[1];
+    const decoded = jwt.verify(token, 'your_jwt_secret');
+    const userId = decoded.id;
+    const user = await User.findById(userId);
+
+    if (!user) {
+      console.log('User not found');
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    user.hackerStats.school = school;
+    user.hackerStats.techStack = techStack;
+    user.hackerStats.desiredRoles = desiredRoles;
+    user.hackerStats.contact = contact;
+    await user.save();
+
+    res.status(200).json({ message: 'Profile updated successful' });
+  } catch (error) {
+    console.error('Server error:', error);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+>>>>>>> Stashed changes
 export default router;

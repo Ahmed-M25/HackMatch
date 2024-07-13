@@ -1,6 +1,6 @@
 import { Link as RouterLink, useLocation } from "react-router-dom";
 import { Box, Flex, Link, Spacer, Heading } from "@chakra-ui/react";
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 
 
 interface NavLinkProps {
@@ -34,6 +34,8 @@ const NavLink = ({ to, children }: NavLinkProps) => {
 };
 
 const Navbar = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   return (
     <Box as="header" px={12} py={4} bg="teal.400">
       <Flex alignItems="center">
@@ -46,7 +48,7 @@ const Navbar = () => {
         <nav>
           <Flex gap="8">
             <NavLink to="/">Home</NavLink>
-            <NavLink to="/login">Login/Signup</NavLink>
+            {isLoggedIn ? <NavLink to="/profile">Profile</NavLink> : <NavLink to="/login">Login/Signup</NavLink>}
             <NavLink to="/connect">Connect</NavLink>
             <NavLink to="/matches">Matches</NavLink>
           </Flex>
