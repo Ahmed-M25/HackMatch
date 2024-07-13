@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import CompImage from '../assets/Comp.png';
+import { Text, Button } from '@chakra-ui/react';
 
 
 const Home: React.FC = () => {
@@ -9,9 +10,9 @@ const Home: React.FC = () => {
       <div style={styles.mainContent}>
         <img src={CompImage} alt="Illustration" style={styles.image} />
         <div style={styles.welcomeBox}>
-          <h2 style={styles.welcomeTitle}>Connect with Innovators and Build Your Dream Team</h2>
+          <Text fontSize='2xl' mb={6}>Connect with innovators and build your Dream Team</Text>
           <Link to="/login">
-          <button style={styles.getStartedButton}>Get Started</button>
+            <Button size='lg' colorScheme='teal'>Get Started</Button>
           </Link>
         </div>
       </div>
@@ -44,19 +45,6 @@ const styles: { [key: string]: React.CSSProperties } = {
   title: {
     margin: 0,
   },
-  buttons: {
-    display: 'flex',
-    gap: '8px',
-  },
-  button: {
-    padding: '8px 16px',
-    fontSize: '16px',
-    border: 'none',
-    borderRadius: '4px',
-    cursor: 'pointer',
-    backgroundColor: '#61dafb',
-    color: '#20232a',
-  },
   mainContent: {
     flex: 1,
     display: 'flex',
@@ -75,22 +63,10 @@ const styles: { [key: string]: React.CSSProperties } = {
     alignItems: 'center',
     maxWidth: '50%',
   },
-  welcomeTitle: {
-    marginBottom: '16px',
-  },
   image: {
-    maxWidth: '65%',
+    maxWidth: '60%',
     height: 'auto',
-  },
-  getStartedButton: {
-    padding: '12px 24px',
-    fontSize: '18px',
-    border: 'none',
-    borderRadius: '4px',
-    cursor: 'pointer',
-    backgroundColor: '#61dafb',
-    color: '#20232a',
-  },
+  }
 };
 
 export default Home;
