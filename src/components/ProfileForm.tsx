@@ -81,7 +81,7 @@ const ProfileForm: React.FC = () => {
       );
 
       if (response.status === 200) {
-        alert("Successful");
+        alert("Profile updated successfully");
       }
     } catch (error) {
       console.error("Error:", error);
