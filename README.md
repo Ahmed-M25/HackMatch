@@ -1,6 +1,6 @@
 # Project Redream Team
 
-[![Watch the video](https://github.com/user-attachments/assets/79dd531d-ce4a-46ac-9c09-85f1f875cac8/thumbnail-image.png)](https://github.com/user-attachments/assets/79dd531d-ce4a-46ac-9c09-85f1f875cac8/25042592-6a6f-4964-adbe-ac1d901b01bc)
+[![Watch the video](https://github.com/user-attachments/assets/79dd531d-ce4a-46ac-9c09-85f1f875cac8/thumbnail-image.png)](https://github.com/user-attachments/assets/dc1bf37c-af23-47af-919e-151c69c44d18)
 
 ### Inspiration
 Hackathons are fantastic opportunities for innovation, collaboration, and learning. However, one of the biggest challenges participants face is finding the right team to join. Inspired by this problem, we created DreamTeam to simplify and enhance the team formation process, ensuring that everyone can find a team that fits their skills and preferences perfectly.
