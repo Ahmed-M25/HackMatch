@@ -1,30 +1,27 @@
-# React + TypeScript + Vite
+# Project Redream Team
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![Watch the video](https://github.com/user-attachments/assets/79dd531d-ce4a-46ac-9c09-85f1f875cac8/thumbnail-image.png)](https://github.com/user-attachments/assets/79dd531d-ce4a-46ac-9c09-85f1f875cac8/25042592-6a6f-4964-adbe-ac1d901b01bc)
 
-Currently, two official plugins are available:
+### Inspiration
+Hackathons are fantastic opportunities for innovation, collaboration, and learning. However, one of the biggest challenges participants face is finding the right team to join. Inspired by this problem, we created DreamTeam to simplify and enhance the team formation process, ensuring that everyone can find a team that fits their skills and preferences perfectly.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### What We Learned
+Building DreamTeam was an incredible learning experience. We deepened our understanding of:
+- Machine learning algorithms, particularly K-means clustering
+- The powerful capabilities of the Sentence Transformers for natural language processing
+- Integrating a full-stack application using Node.js, Express, MongoDB, and React, which honed our skills in web development and API design
 
-## Expanding the ESLint configuration
+### How We Built It
+- **Frontend**: Developed with React for a responsive and dynamic user interface, allowing participants to easily sign up, list their skills, and set their preferences.
+- **Backend**: Utilized Node.js and Express to handle user authentication, data processing, and communication with the database.
+- **Database**: Implemented MongoDB to store user profiles, ensuring scalability and efficient data retrieval.
+- **Machine Learning**: Leveraged Sentence Transformers to encode user profiles into vectors and used K-means clustering for smart team formation based on these vectors.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Challenges We Ran Into
+- **Complex Matching Logic**: Implementing the K-means clustering algorithm and adjusting it to account for user preferences required significant tweaking and optimization.
+- **Data Integration**: Ensuring that user data from MongoDB was correctly encoded and processed in the machine learning pipeline was challenging, especially when dealing with real-time updates.
+- **User Interface**: Designing an intuitive and user-friendly interface that could handle various edge cases, such as incomplete profiles and changing preferences, was a key focus.
 
-- Configure the top-level `parserOptions` property like this:
+### What's Next for DreamTeam
+- **Dynamic Re-Matching**: Allowing for dynamic re-matching during the hackathon in case of dropouts or changes in availability.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
