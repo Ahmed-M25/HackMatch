@@ -1,4 +1,4 @@
-import { Stack, Flex, Button } from "@chakra-ui/react";
+import { Stack, Flex, Button, Box, Spinner } from "@chakra-ui/react";
 import { ArrowBackIcon, ArrowForwardIcon } from "@chakra-ui/icons";
 import HackerCard from "../components/HackerCard";
 import { useState, useEffect } from "react";
@@ -13,6 +13,7 @@ const Connect = () => {
   const [profile, setProfile] = useState<HackerStats>(profileList[currIndex]);
   const [interested, setInterested] = useState<string[]>([]);
   const [animation, setAnimation] = useState<string>("");
+  const [isLoading, setIsLoading] = useState(true);
 
   const navigate = useNavigate();
 
@@ -74,6 +75,20 @@ const Connect = () => {
       updatePreferences(interested);
     };
   }, [interested]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 800);
+  }, [])
+
+  if (isLoading) {
+    return (
+      <Box display="flex" justifyContent="center" alignItems="center" height="100vh">
+        <Spinner size="xl" />
+      </Box>
+    );
+  }
 
   return (
     <Flex direction="column" align="center" justify="center" minHeight="100vh">

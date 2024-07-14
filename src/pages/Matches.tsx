@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Box, Heading, Text, Spinner, Flex, Button, Image, Stack } from '@chakra-ui/react';
+import { Box, Heading, Text, Spinner, Flex, Button, Stack } from '@chakra-ui/react';
 import { FaHeart, FaTimes } from 'react-icons/fa';
 
 interface UserProfile {
@@ -25,7 +25,9 @@ const Matches: React.FC = () => {
           }
         });
         setTeam(response.data);
-        setLoading(false);
+        setTimeout(() => {
+          setLoading(false);
+        }, 800);
       } catch (error) {
         console.error('Error fetching team:', error);
         setLoading(false);
@@ -51,7 +53,7 @@ const Matches: React.FC = () => {
       bgGradient="linear(to-r, gray.800, gray.700)"
       backgroundImage="url('https://www.transparenttextures.com/patterns/cubes.png')"
     >
-      <Heading as="h1" size="2xl" mb={6} textAlign="center">
+      <Heading as="h1" size="2xl" mb={6} mt={6} textAlign="center">
         My Team
       </Heading>
       <Flex justify="center" flexWrap="wrap">
@@ -62,10 +64,18 @@ const Matches: React.FC = () => {
             borderRadius="md"
             shadow="md"
             m={4}
+            mt='80px'
             p={6}
             width="300px"
             textAlign="center"
             position="relative"
+            transition='transform 0.5s ease-in-out, border-color 0.5s ease-in-out'
+            _hover={{
+              transform: 'scale(1.1)',
+              borderColor: 'gray.400',
+            }}
+            borderWidth="2px"
+            borderColor="gray.600"
           >
             {/* <Image
               src={`https://api.adorable.io/avatars/285/${member.user}.png`}
@@ -85,7 +95,7 @@ const Matches: React.FC = () => {
                 <Text>{member.tech_stack}</Text>
               </Box>
               <Box>
-                <Text fontWeight="bold">Interests</Text>
+                <Text fontWeight="bold">Looking for...</Text>
                 <Text>{member.interests}</Text>
               </Box>
               <Box>

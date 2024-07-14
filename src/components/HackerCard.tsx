@@ -71,7 +71,7 @@ const HackerCard: React.FC<HackerCardProps> = ({
           </Box>
           <Box>
             <Heading size="xs" textTransform="uppercase" color="gray.300">
-              Looking for...
+              Looking for someone that knows...
             </Heading>
             <Text pt="2" fontSize="sm" color="white">
               {seeking}

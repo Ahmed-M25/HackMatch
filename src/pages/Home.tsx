@@ -10,7 +10,7 @@ const Home: React.FC = () => {
       <Box style={styles.mainContent}>
         <VStack style={styles.centeredContent} spacing={6}>
           <Text style={styles.heading} fontSize="8xl" fontWeight="bold">
-          HackMatch
+          Dream Team
           </Text>
           <Link to="/login">
             <Button size="lg" style={styles.gradientButton}>
