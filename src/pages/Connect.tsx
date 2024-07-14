@@ -42,15 +42,15 @@ const Connect = () => {
   };
 
   return (
-    <Flex direction="column" align="center" justify="center" minHeight="100vh">
+    <Flex direction="column" align="center" justify="center" minHeight="100%">
       <style>{keyframes}</style>
-      <div style={{ ...styles[animation] }}>
+      <div style={{ ...styles[animation], marginTop: '31px' }}>
         <HackerCard profile={profile} />
       </div>
 
-      <Stack direction="row" spacing={4}>
+      <Stack direction="row" spacing={4} mb={8}>
         <Button
-          size="lg"
+          size="md"
           colorScheme="red"
           variant="solid"
           flex="1"
@@ -60,7 +60,7 @@ const Connect = () => {
           Not Interested
         </Button>
         <Button
-          size="lg"
+          size="md"
           colorScheme="teal"
           variant="solid"
           flex="1"

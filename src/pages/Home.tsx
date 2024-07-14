@@ -10,7 +10,7 @@ const Home: React.FC = () => {
       <div style={styles.mainContent}>
         <img src={CompImage} alt="Illustration" style={styles.image} />
         <div style={styles.welcomeBox}>
-          <Text color={'teal.700'} fontSize='2xl' mb={6}>Connect with innovators and build your Dream Team</Text>
+          <Text color={'teal.100'} fontSize='2xl' mb={6}>Connect with innovators and build your Dream Team</Text>
           <Link to="/login">
             <Button size='lg' colorScheme='teal'>Get Started</Button>
           </Link>
@@ -22,7 +22,7 @@ const Home: React.FC = () => {
 
 const styles: { [key: string]: React.CSSProperties } = {
   container: {
-    minHeight: '91vh',
+    minHeight: '90vh',
     margin: 0,
     padding: 0,
     color: '#f5f5f5',

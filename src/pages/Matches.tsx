@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Box, Heading, List, ListItem, Text, Spinner } from '@chakra-ui/react';
 
 interface UserProfile {
   user: string;
@@ -32,25 +33,35 @@ const Matches: React.FC = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <Box display="flex" justifyContent="center" alignItems="center" height="100vh">
+        <Spinner size="xl" />
+      </Box>
+    );
   }
 
   return (
-    <div>
-      <h1>Formed Teams</h1>
+    <Box p={6} color="white" minH="100vh">
+      <Heading as="h1" size="2xl" mb={6} textAlign="center">
+        My Team
+      </Heading>
       {Object.keys(teams).map((teamId) => (
-        <div key={teamId}>
-          <h2>Team {parseInt(teamId) + 1}</h2>
-          <ul>
+        <Box key={teamId} mb={8} p={4} bg="gray.700" borderRadius="md" shadow="md">
+          <Heading as="h2" size="lg" mb={4}>
+            Team {parseInt(teamId) + 1}
+          </Heading>
+          <List spacing={3}>
             {teams[teamId].map((member, index) => (
-              <li key={index}>
-                <strong>{member.user}</strong> - {member.tech_stack} - {member.interests}
-              </li>
+              <ListItem key={index} p={3} bg="gray.600" borderRadius="md">
+                <Text fontWeight="bold">{member.user}</Text>
+                <Text>{member.tech_stack}</Text>
+                <Text>{member.interests}</Text>
+              </ListItem>
             ))}
-          </ul>
-        </div>
+          </List>
+        </Box>
       ))}
-    </div>
+    </Box>
   );
 };
 

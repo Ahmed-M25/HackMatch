@@ -1,5 +1,5 @@
 import { Link as RouterLink, useLocation } from "react-router-dom";
-import { Box, Flex, Link, Spacer, Heading } from "@chakra-ui/react";
+import { Box, Flex, Link, Spacer, Heading, Image } from "@chakra-ui/react";
 import { ReactNode } from "react";
 
 interface NavLinkProps {
@@ -19,6 +19,7 @@ const NavLink = ({ to, children }: NavLinkProps) => {
       as={RouterLink}
       to={to}
       bg={isSelected ? "teal.500" : "teal.400"}
+      textShadow="2px 4px 8px rgba(0, 0, 0, 0.6)"
       borderRadius="3xl"
       paddingX="4"
       paddingY="2"
@@ -37,9 +38,10 @@ const NavLink = ({ to, children }: NavLinkProps) => {
 
 const Navbar = () => {
   return (
-    <Box as="header" px={12} py={4} bg="teal.400">
+    <Box as="header" px={12} py={2} bg="teal.400">
       <Flex alignItems="center">
-        <Heading as={RouterLink} to="/" size="lg" mr="8">
+        <Image src="src/assets/Logo.webp" alt="Logo" boxSize="60px" mr={4}/>
+        <Heading as={RouterLink} to="/" size="lg" mr="8" textShadow="2px 4px 5px rgba(0, 0, 0, 0.6)">
           Dream Team
         </Heading>
 

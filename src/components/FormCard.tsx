@@ -10,8 +10,8 @@ const FormCard: React.FC<FormCardProps> = ({ children }) => {
     <Box
       display="flex"
       justifyContent="center"
-      alignItems="center"
-      height="100vh"
+      mt='100px'
+      height="645px"
     >
       <Box
         p={10}

@@ -20,19 +20,33 @@ interface HackerCardProps {
   };
 }
 
-const HackerCard: React.FC<HackerCardProps> = ({ profile: { name, school, techStack, seeking, contact } }) => {
+const HackerCard: React.FC<HackerCardProps> = ({
+  profile: { name, school, techStack, seeking, contact },
+}) => {
   return (
-    <Card w="480px" bg="gray.700" mb="4">
+    <Card
+      w="425px"
+      bg="gray.700"
+      mb="4"
+      borderWidth="3px"
+      borderColor="white.100"
+      borderRadius="md"
+    >
       <CardHeader>
         <Heading size="md">{name}</Heading>
       </CardHeader>
       <CardBody>
         <Stack divider={<StackDivider />} spacing="4">
-          {/* Optionally, you can add a placeholder image */}
           <Box>
             <Image
               src="src/assets/elementor-placeholder-image.webp"
               alt="Profile Picture"
+              maxWidth="80%"
+              height="auto"
+              objectFit="cover"
+              display="block"
+              margin="0 auto"
+              borderRadius="md"
             />
           </Box>
           <Box>
