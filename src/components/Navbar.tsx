@@ -61,9 +61,10 @@ const Navbar = () => {
         <nav>
           <Flex gap="8">
             <NavLink to="/">Home</NavLink>
-            <NavLink to="/login">Login/Signup</NavLink>
             <NavLink to="/connect">Connect</NavLink>
             <NavLink to="/matches">Matches</NavLink>
+            <NavLink to="/profile">Profile</NavLink>
+            <NavLink to="/login">Login/Signup</NavLink>
           </Flex>
         </nav>
       </Flex>

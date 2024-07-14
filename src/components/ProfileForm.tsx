@@ -99,6 +99,7 @@ const ProfileForm: React.FC = () => {
         <FormControl id="school" isRequired>
           <FormLabel>School</FormLabel>
           <Input
+            autoComplete="off"
             placeholder="Enter your program and school"
             value={school}
             onChange={(e) => setSchool(e.target.value)}
@@ -110,6 +111,7 @@ const ProfileForm: React.FC = () => {
         <FormControl id="tech-stack" isRequired>
           <FormLabel>Tech Stack</FormLabel>
           <Input
+            autoComplete="off"
             placeholder="Enter the technologies you use"
             value={techStack}
             onChange={(e) => setTechStack(e.target.value)}
@@ -135,6 +137,7 @@ const ProfileForm: React.FC = () => {
         <FormControl id="contact" isRequired>
           <FormLabel>Contact</FormLabel>
           <Input
+            autoComplete="off"
             placeholder="Enter your contact information"
             value={contact}
             onChange={(e) => setContact(e.target.value)}

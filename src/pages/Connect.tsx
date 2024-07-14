@@ -91,7 +91,7 @@ const Connect = () => {
   }
 
   return (
-    <Flex direction="column" align="center" justify="center" minHeight="100vh">
+    <Flex direction="column" align="center" justify="center" minHeight="100vh" backgroundImage="url('https://www.transparenttextures.com/patterns/cubes.png')">
       <style>{keyframes}</style>
       <div style={{ ...styles[animation] }}>
         <HackerCard profile={profile} />
