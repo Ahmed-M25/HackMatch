@@ -7,6 +7,7 @@ const hackerStatsSchema = new mongoose.Schema({
   techStack: String,
   desiredRole: String,
   contact: String,
+  preferences: [String]
 });
 
 const UserSchema = new mongoose.Schema({

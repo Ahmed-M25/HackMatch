@@ -1,15 +1,20 @@
 import { Stack, Flex, Button } from "@chakra-ui/react";
 import { ArrowBackIcon, ArrowForwardIcon } from "@chakra-ui/icons";
 import HackerCard from "../components/HackerCard";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { HackerStats, profileList } from "../data/hackerData";
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
+
+
 
 const Connect = () => {
   const [currIndex, setCurrIndex] = useState(0);
   const [profile, setProfile] = useState<HackerStats>(profileList[currIndex]);
-  const [interested, setInerested] = useState<string[]>([]); 
-
+  const [interested, setInterested] = useState<string[]>([]);
   const [animation, setAnimation] = useState<string>("");
+
+  const navigate = useNavigate();
 
   const handleNotInterested = () => {
     // Move to the next profile, if available
@@ -21,6 +26,9 @@ const Connect = () => {
         setProfile(profileList[newIndex]);
         setAnimation("swipeIn");
       }
+      else{
+        navigate('/matches');
+      }
     }, 500);
   };
 
@@ -29,8 +37,11 @@ const Connect = () => {
     setAnimation("swipeRight");
     setTimeout(() => {
       const firstName = profile.name.split(' ')[0];
-      setInerested((prev) => [...prev, firstName]);
-      console.log(interested);
+      setInterested((prev) => {
+        const updatedInterested = [...prev, firstName];
+        updatePreferences(updatedInterested);
+        return updatedInterested;
+      });
 
       if (currIndex < profileList.length - 1) {
         const newIndex = currIndex + 1;
@@ -38,19 +49,42 @@ const Connect = () => {
         setProfile(profileList[newIndex]);
         setAnimation("swipeIn");
       }
+      else{
+        navigate('/matches');
+      }
     }, 500);
   };
 
+  const updatePreferences = async (preferences: string[]) => {
+    try {
+      const token = localStorage.getItem('token'); // Assuming token is stored in localStorage
+      await axios.put('http://localhost:5001/api/auth/preferences', { preferences }, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      console.log('Preferences updated successfully');
+    } catch (error) {
+      console.error('Error updating preferences:', error);
+    }
+  };
+
+  useEffect(() => {
+    return () => {
+      updatePreferences(interested);
+    };
+  }, [interested]);
+
   return (
-    <Flex direction="column" align="center" justify="center" minHeight="100%">
+    <Flex direction="column" align="center" justify="center" minHeight="100vh">
       <style>{keyframes}</style>
-      <div style={{ ...styles[animation], marginTop: '31px' }}>
+      <div style={{ ...styles[animation] }}>
         <HackerCard profile={profile} />
       </div>
 
-      <Stack direction="row" spacing={4} mb={8}>
+      <Stack direction="row" spacing={4}>
         <Button
-          size="md"
+          size="lg"
           colorScheme="red"
           variant="solid"
           flex="1"
@@ -60,7 +94,7 @@ const Connect = () => {
           Not Interested
         </Button>
         <Button
-          size="md"
+          size="lg"
           colorScheme="teal"
           variant="solid"
           flex="1"
@@ -91,7 +125,6 @@ const styles: Record<string, AnimationStyle> = {
     animation: "swipeIn 0.5s forwards",
   },
 };
-
 
 // Define keyframes directly in the component
 const keyframes = `

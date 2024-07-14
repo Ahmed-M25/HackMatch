@@ -1,72 +1,72 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import CompImage from '../assets/Comp.png';
-import { Text, Button } from '@chakra-ui/react';
-
+import { Box, Text, Button, VStack } from '@chakra-ui/react';
+import BackgroundImage from '../assets/6e9794bcedeecf5a8f8f41338a2a7345.webp'; // Add your background image path here
 
 const Home: React.FC = () => {
   return (
-    <div style={styles.container}>
-      <div style={styles.mainContent}>
-        <img src={CompImage} alt="Illustration" style={styles.image} />
-        <div style={styles.welcomeBox}>
-          <Text color={'teal.100'} fontSize='2xl' mb={6}>Connect with innovators and build your Dream Team</Text>
+    <Box style={styles.container}>
+      <Box style={styles.overlay} />
+      <Box style={styles.mainContent}>
+        <VStack style={styles.centeredContent} spacing={6}>
+          <Text style={styles.heading} fontSize="9xl" fontWeight="bold">
+            Swipe Right®
+          </Text>
           <Link to="/login">
-            <Button size='lg' colorScheme='teal'>Get Started</Button>
+            <Button size="lg" style={styles.gradientButton}>
+              Create account
+            </Button>
           </Link>
-        </div>
-      </div>
-    </div>
+        </VStack>
+      </Box>
+    </Box>
   );
 };
 
 const styles: { [key: string]: React.CSSProperties } = {
   container: {
+    position: 'relative',
     minHeight: '90vh',
     margin: 0,
     padding: 0,
-    color: '#f5f5f5',
     display: 'flex',
     flexDirection: 'column',
-    overflow: 'hidden'
-  },
-  header: {
-    display: 'flex',
-    justifyContent: 'space-between',
+    overflow: 'hidden',
+    backgroundImage: `url(${BackgroundImage})`, // Set your background image here
+    backgroundSize: 'cover', // Ensure the image covers the whole container
+    backgroundPosition: 'center', // Center the image
+    backgroundRepeat: 'no-repeat', // Prevent the image from repeating
     alignItems: 'center',
-    backgroundColor: '#333',
-    padding: '16px',
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)',
-    borderRadius: '8px',
-    width: '100%',
-    boxSizing: 'border-box',
+    justifyContent: 'center', // Center the content vertically
   },
-  title: {
-    margin: 0,
+  overlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Dark overlay
   },
   mainContent: {
-    flex: 1,
+    position: 'relative',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'flex-start',
+    justifyContent: 'center', // Center the content horizontally
     padding: '16px',
     boxSizing: 'border-box',
-    gap: '32px',
-    marginLeft: '10%',
-    width: '80%',
+    width: '100%', // Make sure the content takes full width
   },
-  welcomeBox: {
+  centeredContent: {
     textAlign: 'center',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    maxWidth: '50%',
   },
-  image: {
-    maxWidth: '60%',
-    height: 'auto',
-  }
+  heading: {
+    color: 'white',
+  },
+  gradientButton: {
+    background: 'linear-gradient(to right, teal, cyan)', // Teal gradient
+    color: 'white',
+    borderRadius: '25px',
+  },
 };
-
 
 export default Home;

@@ -1,6 +1,3 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-
 export interface HackerStats {
   name: string;
   school: string;

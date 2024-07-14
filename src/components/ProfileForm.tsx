@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Box,
   Button,
@@ -26,6 +27,8 @@ const ProfileForm: React.FC = () => {
   const [isTechStackInvalid, setIsTechStackInvalid] = useState<boolean>(false);
   const [isRoleInvalid, setIsRoleInvalid] = useState<boolean>(false);
   const [isContactInvalid, setIsContactInvalid] = useState<boolean>(false);
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -76,6 +79,7 @@ const ProfileForm: React.FC = () => {
 
       if (response.status === 200) {
         alert("Successful");
+        navigate("/connect");
       }
     } catch (error) {
       console.error("Error:", error);

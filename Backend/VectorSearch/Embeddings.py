@@ -10,18 +10,14 @@ sys.stderr = open('embeddings_error.log', 'w')
 print("Starting Embeddings.py script")
 
 # Sample user profiles with preferences
-user_profiles = [
-    {'user': 'Alice', 'tech_stack': 'Python, ML', 'interests': 'Data Science', 'preferences': ['Bob', 'Charlie']},
-    {'user': 'Bob', 'tech_stack': 'JavaScript, React', 'interests': 'Web Development', 'preferences': ['Alice']},
-    {'user': 'Charlie', 'tech_stack': 'Python, Data Science', 'interests': 'AI', 'preferences': ['Alice']},
-    {'user': 'David', 'tech_stack': 'Java, Spring', 'interests': 'Backend Development', 'preferences': []},
-    {'user': 'Eve', 'tech_stack': 'JavaScript, Node.js', 'interests': 'Full Stack', 'preferences': []},
-    {'user': 'Frank', 'tech_stack': 'C++, Unreal Engine', 'interests': 'Game Development', 'preferences': []},
-    {'user': 'Grace', 'tech_stack': 'Ruby on Rails', 'interests': 'Web Development', 'preferences': []},
-    {'user': 'Hannah', 'tech_stack': 'Python, Django', 'interests': 'Web Development', 'preferences': []},
-    {'user': 'Ivan', 'tech_stack': 'Go, Kubernetes', 'interests': 'Cloud Engineering', 'preferences': []},
-    {'user': 'Judy', 'tech_stack': 'Swift, iOS', 'interests': 'Mobile Development', 'preferences': []}
-]
+try:
+    with open('user_profiles.json', 'r') as f:
+        user_profiles = json.load(f)
+    print("User profiles loaded successfully")
+except Exception as e:
+    print(f"Error loading user profiles: {e}")
+    sys.stderr.write(f"Error loading user profiles: {e}\n")
+    raise
 
 # Log to check user profiles loaded
 print("User profiles loaded")

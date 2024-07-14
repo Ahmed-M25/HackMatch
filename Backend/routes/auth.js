@@ -73,6 +73,35 @@ router.put('/profile', async (req, res) => {
   }
 });
 
+router.put('/preferences', async (req, res) => {
+  const { authorization } = req.headers;
+  const { preferences } = req.body;
+
+  if (!authorization) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+
+  try {
+    const token = authorization.split(' ')[1];
+    const decoded = jwt.verify(token, 'your_jwt_secret');
+    const userId = decoded.id;
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    user.hackerStats.preferences = preferences;
+    await user.save();
+
+    res.status(200).json({ message: 'Preferences updated successfully' });
+  } catch (error) {
+    console.error('Server error:', error);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+
 router.get('/profiles', async (req, res) => {
   const { authorization } = req.headers;
 

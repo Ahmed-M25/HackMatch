@@ -6,30 +6,32 @@ interface UserProfile {
   user: string;
   tech_stack: string;
   interests: string;
-  preferences: string[];
-}
-
-interface Teams {
-  [key: string]: UserProfile[];
+  preferences: [string];
+  contact: string;
 }
 
 const Matches: React.FC = () => {
-  const [teams, setTeams] = useState<Teams>({});
+  const [team, setTeam] = useState<UserProfile[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const fetchTeams = async () => {
+    const fetchTeam = async () => {
       try {
-        const response = await axios.get('http://localhost:5001/api/teams');
-        setTeams(response.data);
+        const token = localStorage.getItem('token'); // Assuming token is stored in localStorage
+        const response = await axios.get('http://localhost:5001/api/team', {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+        setTeam(response.data);
         setLoading(false);
       } catch (error) {
-        console.error('Error fetching teams:', error);
+        console.error('Error fetching team:', error);
         setLoading(false);
       }
     };
 
-    fetchTeams();
+    fetchTeam();
   }, []);
 
   if (loading) {
@@ -45,22 +47,21 @@ const Matches: React.FC = () => {
       <Heading as="h1" size="2xl" mb={6} textAlign="center">
         My Team
       </Heading>
-      {Object.keys(teams).map((teamId) => (
-        <Box key={teamId} mb={8} p={4} bg="gray.700" borderRadius="md" shadow="md">
-          <Heading as="h2" size="lg" mb={4}>
-            Team {parseInt(teamId) + 1}
-          </Heading>
-          <List spacing={3}>
-            {teams[teamId].map((member, index) => (
-              <ListItem key={index} p={3} bg="gray.600" borderRadius="md">
-                <Text fontWeight="bold">{member.user}</Text>
-                <Text>{member.tech_stack}</Text>
-                <Text>{member.interests}</Text>
-              </ListItem>
-            ))}
-          </List>
-        </Box>
-      ))}
+      <Box mb={8} p={4} bg="gray.700" borderRadius="md" shadow="md">
+        <Heading as="h2" size="lg" mb={4}>
+          Team
+        </Heading>
+        <List spacing={3}>
+          {team.map((member, index) => (
+            <ListItem key={index} p={3} bg="gray.600" borderRadius="md">
+              <Text fontWeight="bold" textTransform={'capitalize'}>{member.user}</Text>
+              <Text>{member.tech_stack}</Text>
+              <Text>{member.interests}</Text>
+              <Text>{member.contact}</Text>
+            </ListItem>
+          ))}
+        </List>
+      </Box>
     </Box>
   );
 };

@@ -18,14 +18,14 @@ const NavLink = ({ to, children }: NavLinkProps) => {
     <Link
       as={RouterLink}
       to={to}
-      bg={isSelected ? "teal.500" : "teal.400"}
+      bg={isSelected ? "teal.600" : "teal.500"} // Less contrasting teal
       textShadow="2px 4px 8px rgba(0, 0, 0, 0.6)"
       borderRadius="3xl"
       paddingX="4"
       paddingY="2"
       transition="all 0.3s"
       _hover={{
-        bg: "teal.500",
+        bg: "teal.400",
         transform: "scale(1.05)",
       }}
       fontWeight="bold"
@@ -38,10 +38,21 @@ const NavLink = ({ to, children }: NavLinkProps) => {
 
 const Navbar = () => {
   return (
-    <Box as="header" px={12} py={2} bg="teal.400">
+    <Box 
+      as="header" 
+      px={12} 
+      py={2} 
+      bg="teal.500" // Changed to solid teal color
+    >
       <Flex alignItems="center">
-        <Image src="src/assets/Logo.webp" alt="Logo" boxSize="60px" mr={4}/>
-        <Heading as={RouterLink} to="/" size="lg" mr="8" textShadow="2px 4px 5px rgba(0, 0, 0, 0.6)">
+        <Image src="src/assets/Logo.webp" alt="Logo" boxSize="60px" mr={4} />
+        <Heading
+          as={RouterLink}
+          to="/"
+          size="lg"
+          mr="8"
+          textShadow="2px 4px 5px rgba(0, 0, 0, 0.6)"
+        >
           Dream Team
         </Heading>
 

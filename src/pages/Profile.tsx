@@ -27,7 +27,7 @@ const Profile = () => {
         colorScheme="teal"
         onClick={handleLogout}
         position="absolute"
-        bottom={8}
+        top={24}
         right={8}
       >
         Logout

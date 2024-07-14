@@ -36,7 +36,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ formType }) => {
   };
 
   return (
-    <Box p={8} maxWidth="450px" borderWidth={1} borderRadius={8} boxShadow="lg" bg="gray.800">
+    <Box p={8} maxWidth="450px" borderWidth={1} borderRadius={8} boxShadow="lg" bg="gray.800" mt="80px" >
       <Heading as="h2" size="lg" mb={6} textAlign="center">
         {isLogin ? 'Login' : 'Sign Up'}
       </Heading>
