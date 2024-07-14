@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Box, Heading, List, ListItem, Text, Spinner } from '@chakra-ui/react';
+import { Box, Heading, Text, Spinner, Flex, Button, Image, Stack } from '@chakra-ui/react';
+import { FaHeart, FaTimes } from 'react-icons/fa';
 
 interface UserProfile {
   user: string;
@@ -43,25 +44,66 @@ const Matches: React.FC = () => {
   }
 
   return (
-    <Box p={6} color="white" minH="100vh">
+    <Box
+      p={6}
+      color="white"
+      minH="100vh"
+      bgGradient="linear(to-r, gray.800, gray.700)"
+      backgroundImage="url('https://www.transparenttextures.com/patterns/cubes.png')"
+    >
       <Heading as="h1" size="2xl" mb={6} textAlign="center">
         My Team
       </Heading>
-      <Box mb={8} p={4} bg="gray.700" borderRadius="md" shadow="md">
-        <Heading as="h2" size="lg" mb={4}>
-          Team
-        </Heading>
-        <List spacing={3}>
-          {team.map((member, index) => (
-            <ListItem key={index} p={3} bg="gray.600" borderRadius="md">
-              <Text fontWeight="bold" textTransform={'capitalize'}>{member.user}</Text>
-              <Text>{member.tech_stack}</Text>
-              <Text>{member.interests}</Text>
-              <Text>{member.contact}</Text>
-            </ListItem>
-          ))}
-        </List>
-      </Box>
+      <Flex justify="center" flexWrap="wrap">
+        {team.map((member, index) => (
+          <Box
+            key={index}
+            bg="gray.700"
+            borderRadius="md"
+            shadow="md"
+            m={4}
+            p={6}
+            width="300px"
+            textAlign="center"
+            position="relative"
+          >
+            {/* <Image
+              src={`https://api.adorable.io/avatars/285/${member.user}.png`}
+              alt={member.user}
+              borderRadius="full"
+              boxSize="120px"
+              objectFit="cover"
+              mx="auto"
+              mb={4}
+            /> */}
+            <Heading as="h3" size="lg" mb={4} textTransform="capitalize">
+              {member.user}
+            </Heading>
+            <Stack spacing={3} textAlign="left">
+              <Box>
+                <Text fontWeight="bold">Tech Stack</Text>
+                <Text>{member.tech_stack}</Text>
+              </Box>
+              <Box>
+                <Text fontWeight="bold">Interests</Text>
+                <Text>{member.interests}</Text>
+              </Box>
+              <Box>
+                <Text fontWeight="bold">Contact</Text>
+                <Text>{member.contact}</Text>
+              </Box>
+            </Stack>
+            <Flex justify="space-around" mt={6}>
+              <Button colorScheme="red" leftIcon={<FaTimes />} variant="solid">
+                Pass
+              </Button>
+              <Button colorScheme="green" leftIcon={<FaHeart />} variant="solid">
+                Like
+              </Button>
+            </Flex>
+          </Box>
+        ))}
+      </Flex>
     </Box>
   );
 };

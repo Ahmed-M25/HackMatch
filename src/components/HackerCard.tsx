@@ -26,18 +26,21 @@ const HackerCard: React.FC<HackerCardProps> = ({
   return (
     <Card
       w="425px"
-      bg="gray.700"
+      bgGradient="linear(to-r, gray.700, gray.800)"
       mb="4"
-      borderWidth="3px"
-      borderColor="white.100"
-      borderRadius="md"
+      borderWidth="2px"
+      borderColor="gray.600"
+      borderRadius="lg"
+      shadow="lg"
     >
-      <CardHeader>
-        <Heading size="md">{name}</Heading>
+      <CardHeader textAlign="center">
+        <Heading size="lg" color="white">
+          {name}
+        </Heading>
       </CardHeader>
       <CardBody>
-        <Stack divider={<StackDivider />} spacing="4">
-          <Box>
+        <Stack divider={<StackDivider borderColor="gray.600" />} spacing="4">
+          <Box textAlign="center">
             <Image
               src="src/assets/elementor-placeholder-image.webp"
               alt="Profile Picture"
@@ -46,38 +49,39 @@ const HackerCard: React.FC<HackerCardProps> = ({
               objectFit="cover"
               display="block"
               margin="0 auto"
-              borderRadius="md"
+              borderRadius="full"
+              shadow="md"
             />
           </Box>
           <Box>
-            <Heading size="xs" textTransform="uppercase">
+            <Heading size="xs" textTransform="uppercase" color="gray.300">
               School
             </Heading>
-            <Text pt="2" fontSize="sm">
+            <Text pt="2" fontSize="sm" color="white">
               {school}
             </Text>
           </Box>
           <Box>
-            <Heading size="xs" textTransform="uppercase">
+            <Heading size="xs" textTransform="uppercase" color="gray.300">
               Tech Stack
             </Heading>
-            <Text pt="2" fontSize="sm">
+            <Text pt="2" fontSize="sm" color="white">
               {techStack}
             </Text>
           </Box>
           <Box>
-            <Heading size="xs" textTransform="uppercase">
+            <Heading size="xs" textTransform="uppercase" color="gray.300">
               Looking for...
             </Heading>
-            <Text pt="2" fontSize="sm">
+            <Text pt="2" fontSize="sm" color="white">
               {seeking}
             </Text>
           </Box>
           <Box>
-            <Heading size="xs" textTransform="uppercase">
+            <Heading size="xs" textTransform="uppercase" color="gray.300">
               Contact
             </Heading>
-            <Text pt="2" fontSize="sm">
+            <Text pt="2" fontSize="sm" color="white">
               {contact}
             </Text>
           </Box>

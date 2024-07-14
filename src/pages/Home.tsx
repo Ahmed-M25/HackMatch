@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Box, Text, Button, VStack } from '@chakra-ui/react';
-import BackgroundImage from '../assets/6e9794bcedeecf5a8f8f41338a2a7345.webp'; // Add your background image path here
+import BackgroundImage from '../assets/6e9794bcedeecf5a8f8f41338a2a7345.webp';
 
 const Home: React.FC = () => {
   return (
@@ -9,8 +9,8 @@ const Home: React.FC = () => {
       <Box style={styles.overlay} />
       <Box style={styles.mainContent}>
         <VStack style={styles.centeredContent} spacing={6}>
-          <Text style={styles.heading} fontSize="9xl" fontWeight="bold">
-            Swipe Right®
+          <Text style={styles.heading} fontSize="8xl" fontWeight="bold">
+          Your Dream Team
           </Text>
           <Link to="/login">
             <Button size="lg" style={styles.gradientButton}>
@@ -32,12 +32,12 @@ const styles: { [key: string]: React.CSSProperties } = {
     display: 'flex',
     flexDirection: 'column',
     overflow: 'hidden',
-    backgroundImage: `url(${BackgroundImage})`, // Set your background image here
-    backgroundSize: 'cover', // Ensure the image covers the whole container
-    backgroundPosition: 'center', // Center the image
-    backgroundRepeat: 'no-repeat', // Prevent the image from repeating
+    backgroundImage: `url(${BackgroundImage})`,
+    backgroundSize: 'cover', 
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
     alignItems: 'center',
-    justifyContent: 'center', // Center the content vertically
+    justifyContent: 'center', 
   },
   overlay: {
     position: 'absolute',
@@ -45,16 +45,16 @@ const styles: { [key: string]: React.CSSProperties } = {
     left: 0,
     width: '100%',
     height: '100%',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Dark overlay
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
   mainContent: {
     position: 'relative',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center', // Center the content horizontally
+    justifyContent: 'center', 
     padding: '16px',
     boxSizing: 'border-box',
-    width: '100%', // Make sure the content takes full width
+    width: '100%',
   },
   centeredContent: {
     textAlign: 'center',
@@ -63,7 +63,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     color: 'white',
   },
   gradientButton: {
-    background: 'linear-gradient(to right, teal, cyan)', // Teal gradient
+    background: 'linear-gradient(to right, teal, cyan)',
     color: 'white',
     borderRadius: '25px',
   },

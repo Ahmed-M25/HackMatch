@@ -57,7 +57,7 @@ const Connect = () => {
 
   const updatePreferences = async (preferences: string[]) => {
     try {
-      const token = localStorage.getItem('token'); // Assuming token is stored in localStorage
+      const token = localStorage.getItem('token');
       await axios.put('http://localhost:5001/api/auth/preferences', { preferences }, {
         headers: {
           Authorization: `Bearer ${token}`
