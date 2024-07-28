@@ -1,4 +1,4 @@
-# Project Redream Team
+# HackMatch
 
 [![Watch the video](https://github.com/user-attachments/assets/79dd531d-ce4a-46ac-9c09-85f1f875cac8/thumbnail-image.png)](https://github.com/user-attachments/assets/dc1bf37c-af23-47af-919e-151c69c44d18)
 
